@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Compass
+Categories=Applications;
+Exec=invoker --single-instance --type=qtcomponents-qt5 /usr/bin/asteroid-compass
+Icon=ios-compass-outline
+X-Asteroid-Center-Color=#b01c7e
+X-Asteroid-Outer-Color=#420a2f
+Name[en_US]=asteroid-compass.desktop
