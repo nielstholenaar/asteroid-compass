@@ -1,0 +1,7 @@
+Makefile
+asteroid-compass
+asteroid-compass.pro.user
+main.o
+pkg-config_wrapper.sh
+qrc_resources.cpp
+qrc_resources.o
