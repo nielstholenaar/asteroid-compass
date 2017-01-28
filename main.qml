@@ -28,49 +28,36 @@ Application {
     Item {
         id: mainPage
         anchors.fill: parent
-        property int rotation: 0
-
-        Rectangle {
-            id:circle
-            color: "transparent"
-            border.color: "green"
-            border.width: 3
-            radius: width*0.5
-            width: 150
-            height: 150
-            anchors.centerIn: parent
-
-
-            Image {
-                anchors.fill: parent
-                id: arrowImage
-                x: parent.x
-                y: parent.y
-                fillMode: Image.PreserveAspectFit
-                source: "compass.png"
-                rotation: -mainPage.rotation
-                transformOrigin: arrowImage.Center
-            }
-
-        }
+        property int rotation: 0;
+        property int calibration: 0;
 
         Compass {
             id: compass
             active: true
             onReadingChanged: {
-               mainPage.rotation = reading.azimuth;
+                mainPage.rotation = reading.azimuth;
+                mainPage.calibration = reading.calibrationLevel;
             }
         }
 
-        Text {
-            id:rotationText
-            text: mainPage.rotation + " °N"
-            color: "white"
-            font.pixelSize: 25
+        Image {
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.verticalCenter: parent.bottom - 50
+            anchors.top: parent.top
+            anchors.topMargin: 25
+            id: arrowImage
+            fillMode: Image.PreserveAspectFit
+            source: "compass.png"
+            rotation: -mainPage.rotation
+            height: 200;
+        }
+
+        Text {
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 20
+            color: "white";
+            font.pixelSize: 20
+            text: mainPage.rotation + " °N Calibrated: " + mainPage.calibration
         }
     }
-
 }
-
